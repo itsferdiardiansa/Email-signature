@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Email Signature Editor</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+      html {
+        font-family: "Roboto", sans-serif;
+        font-style: normal;
+      }
+
+      .card * {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="relative">
+      <div class="flex gap-8">
+        <div class="my-6 w-4/12 p-8">
+          <div class="text-xl font-bold my-4">Signature Details</div>
+
+          <div class="relative">
+            <div class="mb-5">
+              <label
+                for="name"
+                class="block mb-2 text-sm font-medium text-gray-700"
+                >Name</label
+              >
+              <input
+                type="text"
+                id="nameInput"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Your name"
+                value="Taleb Tatari"
+                required
+              />
+            </div>
+
+            <div class="mb-5">
+              <label
+                for="title"
+                class="block mb-2 text-sm font-medium text-gray-700"
+                >Title</label
+              >
+              <input
+                type="text"
+                id="titleInput"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Your title"
+                value="Chief Sales Officer"
+                required
+              />
+            </div>
+
+            <!-- <div class="mb-5">
+              <label
+                for="company"
+                class="block mb-2 text-sm font-medium text-gray-700"
+                >Company</label
+              >
+              <input
+                type="text"
+                id="company"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Your company"
+                required
+              />
+            </div> -->
+
+            <div class="mb-5">
+              <label
+                for="email"
+                class="block mb-2 text-sm font-medium text-gray-700"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="emailInput"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Your email"
+                value="taleb.tatri@ipe-group-immos.de"
+                required
+              />
+            </div>
+
+            <div class="mb-5">
+              <label
+                for="phone"
+                class="block mb-2 text-sm font-medium text-gray-700"
+                >Phone</label
+              >
+
+              <div class="relative">
+                <div
+                  class="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none"
+                >
+                  <svg
+                    class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 19 18"
+                  >
+                    <path
+                      d="M18 13.446a3.02 3.02 0 0 0-.946-1.985l-1.4-1.4a3.054 3.054 0 0 0-4.218 0l-.7.7a.983.983 0 0 1-1.39 0l-2.1-2.1a.983.983 0 0 1 0-1.389l.7-.7a2.98 2.98 0 0 0 0-4.217l-1.4-1.4a2.824 2.824 0 0 0-4.218 0c-3.619 3.619-3 8.229 1.752 12.979C6.785 16.639 9.45 18 11.912 18a7.175 7.175 0 0 0 5.139-2.325A2.9 2.9 0 0 0 18 13.446Z"
+                    />
+                  </svg>
+                </div>
+                <input
+                  type="text"
+                  id="phoneInput"
+                  aria-describedby="helper-text-explanation"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
+                  pattern="+[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  placeholder="123-456-7890"
+                  value="+49 234 97046350"
+                  required
+                />
+              </div>
+            </div>
+
+            <button
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Copy Signature
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="w-full h-screen bg-gray-100 flex items-center justify-center"
+        >
+          <div
+            href="#"
+            class="block max-w-sm p-2 bg-white border border-gray-200 rounded-lg shadow shadow-gray-200"
+          >
+            <table
+              class="MsoNormalTable"
+              border="0"
+              cellspacing="0"
+              cellpadding="0"
+              style="
+                caret-color: rgb(0, 0, 0);
+                color: rgb(0, 0, 0);
+                font-family: Aptos, Arial, Helvetica, sans-serif;
+                font-size: 16px;
+                max-width: 600pt;
+                border-collapse: collapse;
+              "
+            >
+              <tbody>
+                <tr style="height: 9pt">
+                  <td style="padding: 3pt; height: 9pt"></td>
+                </tr>
+                <tr>
+                  <td
+                    width="65"
+                    valign="top"
+                    style="width: 120px; padding: 0cm 10.5pt 0cm 0.75pt"
+                  >
+                    <p
+                      class="MsoNormal"
+                      align="center"
+                      style="
+                        margin: 0cm;
+                        font-size: 11pt;
+                        font-family: Aptos, sans-serif;
+                        text-align: center;
+                      "
+                    >
+                      <span style="font-size: 13.5pt; font-family: Roboto"
+                        ><img
+                          id="imageSelected0"
+                          width="100"
+                          height="100"
+                          src="https://res.cloudinary.com/dh62uj3ss/image/upload/v1723839941/l9u0hz8o68szkxrv66ad.png"
+                      /></span>
+                    </p>
+                  </td>
+                  <td
+                    style="
+                      padding: 3pt 3pt 3pt 9pt;
+                      padding: 0.01px 0.01px 0.01px 14px;
+                      vertical-align: top;
+                      border-left: solid 1px #bdbdbd;
+                    "
+                  >
+                    <table
+                      class="MsoNormalTable"
+                      border="0"
+                      cellspacing="0"
+                      cellpadding="0"
+                      style="border-collapse: collapse"
+                    >
+                      <tbody>
+                        <tr>
+                          <td style="padding: 0cm">
+                            <p
+                              class="MsoNormal"
+                              style="
+                                margin: 0cm;
+                                font-size: 11pt;
+                                font-family: Aptos, sans-serif;
+                              "
+                            >
+                              <span style="font-family: Calibri, sans-serif"
+                                ><img
+                                  width="78"
+                                  height="60"
+                                  id="Picture_x0020_17"
+                                  src="https://res.cloudinary.com/dh62uj3ss/image/upload/v1723839941/yrcuykfwth4qpyw9xeua.png"
+                                  alt="brand"
+                                  data-origin-width="78"
+                                  data-origin-height="60"
+                              /></span>
+                            </p>
+                          </td>
+                        </tr>
+                        <tr style="height: 3.75pt">
+                          <td style="padding: 0.75pt; height: 3.75pt"></td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 0cm">
+                            <p
+                              class="MsoNormal"
+                              style="
+                                font-size: 11pt;
+                                font-family: Aptos, sans-serif;
+                                margin: 0.1pt;
+                              "
+                            >
+                              <b
+                                ><span
+                                  style="
+                                    font-size: 10.5pt;
+                                    font-family: Arial, sans-serif;
+                                  "
+                                  >Kontakt:</span
+                                ></b
+                              ><span
+                                style="
+                                  font-size: 7.5pt;
+                                  font-family: Calibri, sans-serif;
+                                "
+                              ></span>
+                            </p>
+                          </td>
+                        </tr>
+                        <tr style="height: 3.75pt">
+                          <td style="padding: 0.75pt; height: 3.75pt"></td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 0.75pt">
+                            <table
+                              class="MsoNormalTable"
+                              border="0"
+                              cellspacing="0"
+                              cellpadding="0"
+                              style="border-collapse: collapse"
+                            >
+                              <tbody>
+                                <tr>
+                                  <td style="padding: 0.75pt">
+                                    <p
+                                      class="MsoNormal"
+                                      style="
+                                        margin: 0cm;
+                                        font-size: 11pt;
+                                        font-family: Aptos, sans-serif;
+                                      "
+                                    >
+                                      <span
+                                        id="nameText"
+                                        style="
+                                          font-size: 7.5pt;
+                                          font-family: Calibri, sans-serif;
+                                        "
+                                        >Taleb Tatari
+                                      </span>
+                                      <span>-</span>
+                                      <span
+                                        id="titleText"
+                                        style="
+                                          font-size: 7.5pt;
+                                          font-family: Calibri, sans-serif;
+                                        "
+                                        >Chief Sales Officer</span
+                                      >
+                                    </p>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td style="padding: 0.75pt">
+                                    <p
+                                      class="MsoNormal"
+                                      style="
+                                        margin: 0cm;
+                                        font-size: 11pt;
+                                        font-family: Aptos, sans-serif;
+                                      "
+                                    >
+                                      <span
+                                        style="
+                                          font-size: 7.5pt;
+                                          font-family: Calibri, sans-serif;
+                                        "
+                                        >Telefon:&nbsp;<a
+                                          id="phoneLink"
+                                          href="tel:4923497046350"
+                                        >
+                                          <span
+                                            id="phoneText"
+                                            style="color: black"
+                                            >+49 234 97046350</span
+                                          ></a
+                                        ><o:p></o:p
+                                      ></span>
+                                    </p>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td style="padding: 0.75pt">
+                                    <p
+                                      class="MsoNormal"
+                                      style="
+                                        margin: 0cm;
+                                        font-size: 11pt;
+                                        font-family: Aptos, sans-serif;
+                                      "
+                                    >
+                                      <span
+                                        style="
+                                          font-size: 7.5pt;
+                                          font-family: Calibri, sans-serif;
+                                        "
+                                        >E-mail:&nbsp;<a
+                                          id="emailLink"
+                                          href="mailto:taleb.tatri@ipe-group-immos.de"
+                                          style="color: rgb(0, 134, 240)"
+                                          ><span
+                                            id="emailText"
+                                            style="color: burlywood"
+                                            >taleb.tatri@ipe-group-immos.de</span
+                                          ></a
+                                        ></span
+                                      >
+                                    </p>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr style="height: 9pt">
+                  <td style="padding: 3pt; height: 9pt"></td>
+                  <td style="padding: 3pt; height: 9pt"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      window.addEventListener("load", () => {
+        const nameInput = document.querySelector("#nameInput");
+        const nameText = document.querySelector("#nameText");
+
+        const titleInput = document.querySelector("#titleInput");
+        const titleText = document.querySelector("#titleText");
+
+        const phoneInput = document.querySelector("#phoneInput");
+        const phoneText = document.querySelector("#phoneText");
+        const phoneLink = document.querySelector("#phoneLink");
+
+        const emailInput = document.querySelector("#emailInput");
+        const emailText = document.querySelector("#emailText");
+        const emailLink = document.querySelector("#emailLink");
+
+        nameInput.addEventListener("keyup", (e) => {
+          nameText.innerText = e.target.value;
+        });
+
+        titleInput.addEventListener("keyup", (e) => {
+          titleText.innerText = e.target.value;
+        });
+
+        phoneInput.addEventListener("keyup", (e) => {
+          phoneText.innerText = e.target.value;
+          phoneLink.href = "tel:" + e.target.value;
+        });
+
+        emailInput.addEventListener("keyup", (e) => {
+          emailText.innerText = e.target.value;
+          emailLink.href = "mailto:" + e.target.value;
+        });
+      });
+    </script>
+  </body>
+</html>
