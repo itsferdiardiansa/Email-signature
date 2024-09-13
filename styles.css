@@ -1,3 +1,126 @@
-h1 {
-  text-decoration: underline;
+@import url("https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap");
+
+html {
+  font-family: "SUSE", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.container .wrapper {
+  display: flex;
+}
+
+.editor {
+  width: 380px;
+  padding: 16px;
+}
+
+.editor-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding-bottom: 16px;
+  /* margin-bottom: 24px; */
+  border-bottom: 1px solid #dadade;
+}
+
+.editor-form {
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.editor-form .form-control label {
+  font-size: 14px;
+  font-weight: 300;
+  margin-bottom: 8px;
+  display: block;
+  color: #c7c7c7;
+}
+
+.editor-form .form-control input {
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #ffffff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  appearance: none;
+  border-radius: 4px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.editor-form .form-control input:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+
+.editor-form .form-control button {
+  background-color: #13aa52;
+  border: 1px solid #13aa52;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  outline: none;
+  outline: 0;
+  padding: 10px 25px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.editor-form .form-control button:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .editor-form .form-control button {
+    padding: 10px 30px;
+  }
+}
+
+.preview {
+  width: 100vh;
+  height: 100vh;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.preview .preview-card {
+  padding: 8px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 8px rgba(40, 41, 61, 0.08),
+    0px 20px 32px rgba(25, 28, 43, 0.06);
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  will-change: height;
 }
